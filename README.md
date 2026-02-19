@@ -19,3 +19,9 @@ Création du projet django:
 (django-admin startprojec [nom du projet en question])
 ici c'est:
 django-admin startproject interspecbo
+
+création d'une application dans notre projet:
+
+python manage.py startapp [nom_de_l'application]
+ici c'est :
+python manage.py startapp backoffice
