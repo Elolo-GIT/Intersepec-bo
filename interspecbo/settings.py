@@ -11,6 +11,9 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 """
 
 from pathlib import Path
+import environ
+env = environ.Env()
+environ.Env.read_env() 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,8 +23,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-ivh27wlvsr2=979=1w09ed#zr4ss38hb=-jju24j3j8f!w-g&!'
-
+SECRET_KEY = ''
+SECRET_KEY= env("SECRET_KEY"),
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -76,7 +79,11 @@ WSGI_APPLICATION = 'interspecbo.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': env("DB_NAME"),
+	    'USER': env("DB_USER"),
+	    'PASSWORD': env("DB_PASSWORD")
+	    'HOST': env("DB_HOST"),
+	    'PORT': env("DB_PORT")
     }
 }
 
